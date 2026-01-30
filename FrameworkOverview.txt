@@ -1,0 +1,28 @@
+1. there is a 8 pixel difference in yaxis in taking ocr normally and when it is run in automation. So add 8 to y axis value and pass it in the OCR method.
+
+2. Change the screenshot logic to capture  and verify .bmp images. Need to change ImageVerification and ScreenshotCapture classes. -No significant benefit of doing this.
+
+3. Make sure that the bookmarks tab is hidden while cropping images in paint. This affects the match score in OpenCV and might fail the test case.
+
+4. Handle gamble or jackpot resumes. check before transferring the amount.
+
+To trigger Test Runner change the path of the test runner in Cucumber options.
+
+Logic for spin count taking (100 spin count as example).
+
+-click on 100 spin count btn
+-at once start extracting the spin count, make custom method without any sleep. Keep extracting until spin count is equal or 1 less than the previous. If spin count is 1 less than the previous, replace value of the initial count by current count and in current count replace the new value. 
+-keep that in while loop with the condition that banner image should not be matched 100%.
+-Make custom methods for banner trigger, free spin, bonus game, jackpot check with no Thread.sleep() in place.
+			free spins, bonus games, jackpot, checks should immediately stop if the image (Mega in jackpot) and in free spins (Free Spin text image)
+		
+-These methods should trigger only when banner check is true, if not then keep extracting the spin count.
+-
+
+
+
+Contingencies to handle
+	Jackpot can trigger
+	Big win can trigger
+	free spins can trigger
+	After coming back to base game from bonus, free spins, or jackpot game big win pop up can come.
